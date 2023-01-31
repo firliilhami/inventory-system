@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import CustomUser, ROLES
+from .models import CustomUser, ROLES, UserActivities
 
 
 class CreateUSerSerializer(serializers.Serializer):
@@ -24,4 +24,10 @@ class CustomUSerSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         exclude = ("password", )
+
+class UserActivitiesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserActivities
+        fields = ("__all__")
 
