@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$%ntlsk@6x6!xozzw9+ycsh=3xy(d7vqqy$ps443xr$-6bb42r'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG")
@@ -78,9 +78,13 @@ WSGI_APPLICATION = 'inventory_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'USER': config('DB_USER'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT')
+    },
 }
 
 
@@ -124,3 +128,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# development
+AUTH_USER_MODEL = 'user_control.CustomUser'
