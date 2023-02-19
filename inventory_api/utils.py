@@ -27,6 +27,6 @@ def decodeJWT(bearer):
 
     if decoded:
         try:
-            return CustomUser.objects.get(id=decoed['user_id'])
+            return CustomUser.objects.get(id=decoded['user_id'])
         except Exception:
             return None

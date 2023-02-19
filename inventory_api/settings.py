@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     # 3rd party,
     'rest_framework',
     # dev
-    'user_control.apps.UserControlConfig'
+    'user_control.apps.UserControlConfig',
+    'app_control.apps.AppControlConfig'
 
 
 ]
