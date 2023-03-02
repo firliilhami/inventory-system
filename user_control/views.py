@@ -2,7 +2,7 @@ from datetime import datetime
 
 from rest_framework.viewsets import ModelViewSet
 from .serializers import (
-    CreateUSerSerializer, CustomUSerSerializer,
+    CreateUserSerializer, CustomUserSerializer,
     LoginSerializer, UpdatePasswordSerializer, UserActivitiesSerializer)
 from .models import CustomUser, UserActivities
 from rest_framework.response import Response
@@ -25,7 +25,7 @@ def add_user_activity(user, action):
 class CreateUserView(ModelViewSet):
     http_method_names = ['post']
     queryset = CustomUser.objects.all()
-    serializer_class = CreateUSerSerializer
+    serializer_class = CreateUserSerializer
     permission_classes = (IsAuthenticatedCustom,)
 
     def create(self, request):
@@ -105,7 +105,7 @@ class UpdatePasswordView(ModelViewSet):
 class MeView(ModelViewSet):
     http_method_names = ['get']
     queryset = CustomUser.objects.all()
-    serializer_class = CustomUSerSerializer()
+    serializer_class = CustomUserSerializer()
     permission_classes = (IsAuthenticatedCustom,)
 
     def list(self, request):
@@ -127,7 +127,7 @@ class UserActivitesView(ModelViewSet):
 class UsersView(ModelViewSet):
     http_method_names = ['get']
     queryset = CustomUser.objects.all()
-    serializer_class = CustomUSerSerializer()
+    serializer_class = CustomUserSerializer()
     permission_classes = (IsAuthenticatedCustom,)
 
     def list(self, request):

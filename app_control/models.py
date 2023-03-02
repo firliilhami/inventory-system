@@ -45,7 +45,7 @@ class Inventory(models.Model):
     )
     code = models.CharField(max_length=10, unique=True, null=True)
     photo = models.CharField(blank=True, null=True, max_length=255)
-    grouup = models.ForeignKey(
+    group = models.ForeignKey(
         InventoryGroup, related_name="inventories", on_delete=models.SET_NULL,
         null=True
     )
